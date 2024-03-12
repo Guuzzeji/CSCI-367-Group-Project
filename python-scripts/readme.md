@@ -70,7 +70,7 @@ Creating a virtual environment (venv) in Python allows you to isolate your proje
 3. **Create the Virtual Environment**: Run the following command to create a virtual environment named `venv`:
 
    ```
-   python -m venv lib
+   python -m venv venv
    ```
 
    This command creates a directory named `venv` in your project directory, which contains all the necessary files for the virtual environment.
@@ -79,12 +79,12 @@ Creating a virtual environment (venv) in Python allows you to isolate your proje
 
    - **Windows**:
      ```
-     lib\Scripts\activate
+     venv\Scripts\activate
      ```
 
    - **macOS and Linux**:
      ```
-     source lib/bin/activate
+     source venv/bin/activate
      ```
 
    Once activated, you should see `(venv)` in front of your command prompt, indicating that the virtual environment is active.
