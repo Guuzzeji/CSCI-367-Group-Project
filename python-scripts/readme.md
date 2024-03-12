@@ -1,8 +1,8 @@
 <p align="center">
-    <img src="./memeimage.gif">
+    <img width="600px" src="./memeimage.gif">
 </p>
 
-<h1 style="text-align: center;">
+<h1 align="center">
     Cool/DB
 </h1>
 
