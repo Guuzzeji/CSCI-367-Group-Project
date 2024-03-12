@@ -92,7 +92,7 @@ Creating a virtual environment (venv) in Python allows you to isolate your proje
 5. **Install Dependencies**: Now that the virtual environment is active, you can install Python packages and dependencies using `pip` without affecting the global Python installation. For example:
    
    ```
-   pip install ./requirements.txt
+   pip install -r ./requirements.txt
    ```
 
 6. **Deactivate the Virtual Environment**: When you're done working on your project, you can deactivate the virtual environment by running the following command:
