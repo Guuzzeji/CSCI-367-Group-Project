@@ -25,8 +25,8 @@ Create a database in CSV format by fetching data from the Jikan API (https://jik
 - `myanimelisturl`: String/VARCHAR
 - `title`: String/VARCHAR
 - `imgurl`: String/VARCHAR
-- `chapters`: Integer
-- `volumes`: Integer
+- `chapters`: Integer (can be NULL, if not in found myanimelist)
+- `volumes`: Integer (can be NULL, if not in found myanimelist)
 - `publishedstart`: String/Datetime
 - `publishedend`: String/Datetime (or NULL if ongoing)
 - `synopsis`: String/VARCHAR
@@ -49,11 +49,13 @@ Create a database in CSV format by fetching data from the Jikan API (https://jik
 - `type`: String/VARCHAR
 
 ### Review Table
+- Note: Some books may not have a review
 - `bookid`: Integer (reference to Manga Table)
 - `username`: String/VARCHAR
 - `score`: Integer
 - `datecreated`: String/Datetime
 - `myanimeurl`: String/VARCHAR
+
 ## How to setup
 Creating a virtual environment (venv) in Python allows you to isolate your project's dependencies and avoid conflicts with other projects. Here's how to create a venv using Python:
 
