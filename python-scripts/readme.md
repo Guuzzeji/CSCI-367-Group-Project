@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-    Cool/DB
+    DB-Creater
 </h1>
 
 ## About
