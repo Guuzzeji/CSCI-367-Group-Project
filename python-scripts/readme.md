@@ -6,48 +6,54 @@
     Cool/DB
 </h1>
 
-## About
-Create db as .csv from https://api.jikan.moe/v4/manga
+## Overview
+Create a database in CSV format by fetching data from the Jikan API (https://jikan.moe/). The generated CSV files will contain information about manga, including details such as titles, authors, demographics, genres, themes, reviews, and more.
 
-Docs from API https://jikan.moe/
-- https://docs.api.jikan.moe/#tag/manga/operation/getMangaReviews
-- https://docs.api.jikan.moe/#tag/manga/operation/getMangaSearch 
+## Notes
+- Program may take some time to create a db, need to sleep for 4 seconds after every request to not hit rate limit of API
+- Already created 100 row table with everything, can just load that into db
 
-**Create these tables**
-- Manga Table 
-    - bookid = int
-    - myanimelisturl = string/varchar
-    - title = string/varchar
-    - imgurl = string/varchar
-    - chapters = int
-    - volumes = int
-    - publishedstart = string/datetime
-    - publishedend = string/datetime or null if still running
-    - synopsis = string/varchar
-    - background = string/varchar
 
-- Author Table
-    - bookid = int, referance to managa table
-    - Name = string/varchar
+## API Documentation
+- Manga Reviews: [API Documentation](https://docs.api.jikan.moe/#tag/manga/operation/getMangaReviews)
+- Manga Search: [API Documentation](https://docs.api.jikan.moe/#tag/manga/operation/getMangaSearch)
 
-- Demographic Table
-    - bookid = int, referance to managa table
-    - Name = string/varchar
-  
-- Genre Table
-    - bookid = int, referance to managa table
-    - type = string/varchar
+## Created Tables
 
-- Theme Table
-    - bookid = int, referance to managa table
-    - type = string/varchar
+### Manga Table
+- `bookid`: Integer
+- `myanimelisturl`: String/VARCHAR
+- `title`: String/VARCHAR
+- `imgurl`: String/VARCHAR
+- `chapters`: Integer
+- `volumes`: Integer
+- `publishedstart`: String/Datetime
+- `publishedend`: String/Datetime (or NULL if ongoing)
+- `synopsis`: String/VARCHAR
+- `background`: String/VARCHAR
 
-- Review Table
-    - bookid = int, referance to managa table
-    - username = string/varchar
-    - score = int
-    - datecreated = string/datetime
-    - myanimeurl = string/varchar
+### Author Table
+- `bookid`: Integer (reference to Manga Table)
+- `Name`: String/VARCHAR
+
+### Demographic Table
+- `bookid`: Integer (reference to Manga Table)
+- `Name`: String/VARCHAR
+
+### Genre Table
+- `bookid`: Integer (reference to Manga Table)
+- `type`: String/VARCHAR
+
+### Theme Table
+- `bookid`: Integer (reference to Manga Table)
+- `type`: String/VARCHAR
+
+### Review Table
+- `bookid`: Integer (reference to Manga Table)
+- `username`: String/VARCHAR
+- `score`: Integer
+- `datecreated`: String/Datetime
+- `myanimeurl`: String/VARCHAR
 
 ## How to setup
 Creating a virtual environment (venv) in Python allows you to isolate your project's dependencies and avoid conflicts with other projects. Here's how to create a venv using Python:
