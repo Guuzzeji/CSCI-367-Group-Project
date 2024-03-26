@@ -15,13 +15,15 @@ import {
     Center,
     MenuGroup
 } from '@chakra-ui/react';
-import { SearchIcon, ArrowForwardIcon, SmallAddIcon } from '@chakra-ui/icons';
+import { SearchIcon, SmallAddIcon } from '@chakra-ui/icons';
+
+import './SearchBarInput.css';
 
 function SearchBarInput() {
     const [value, setValue] = React.useState('1');
 
     return (
-        <Box bg="white" borderWidth='1px' borderRadius='lg' p={2} style={{ width: '50vw' }}>
+        <Box bg="white" borderWidth='1px' borderRadius='lg' p={2} className='SearchBox'>
             <Stack spacing={4} direction='row'>
                 <InputGroup>
                     <InputLeftElement pointerEvents='none'>
@@ -49,6 +51,7 @@ function SearchBarInput() {
                         </MenuList>
                     </Menu>
                 </Center>
+                {/** TODO: Show test if this btn is need or not */}
                 {/* <Button variant="solid" colorScheme='teal'>
                     <ArrowForwardIcon />
                 </Button> */}
