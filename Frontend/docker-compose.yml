@@ -1,0 +1,11 @@
+version: '3'
+
+# Use for testing for production builds
+
+services:
+  frontend:
+    build: .
+    environment:
+      - PORT=8080
+    ports:
+      - "8080:8080"
