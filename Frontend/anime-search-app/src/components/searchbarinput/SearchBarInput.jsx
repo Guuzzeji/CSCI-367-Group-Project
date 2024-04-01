@@ -20,7 +20,21 @@ import { SearchIcon, SmallAddIcon } from '@chakra-ui/icons';
 import './SearchBarInput.css';
 
 function SearchBarInput() {
-    const [value, setValue] = React.useState('1');
+    const [selectSearchCategory, setSearchCategory] = React.useState('title');
+    const [userSearchQuery, setUserSearchQuery] = React.useState('');
+    const [isSending, setSending] = React.useState(false);
+
+    let handleInputText = (e) => {
+        let text = e.target.value;
+        setUserSearchQuery(text);
+    };
+
+    let handleInputEnter = (e) => {
+        if (e.key === 'Enter') {
+            // TODO: Connect to backend and use isSending to handle disabling of user input to backend to block spamming
+            console.log("User has inputed a value for to search", userSearchQuery);
+        }
+    };
 
     return (
         <Box bg="white" borderWidth='1px' borderRadius='lg' p={2} className='SearchBox'>
@@ -29,7 +43,12 @@ function SearchBarInput() {
                     <InputLeftElement pointerEvents='none'>
                         <SearchIcon color='gray.300' />
                     </InputLeftElement>
-                    <Input isDisabled={false} variant='unstyled' placeholder='Search...' />
+                    <Input
+                        onChange={handleInputText}
+                        onKeyDown={handleInputEnter}
+                        isDisabled={false}
+                        variant='unstyled'
+                        placeholder='Search...' />
                 </InputGroup>
                 <Center>
                     <Menu>
@@ -39,12 +58,12 @@ function SearchBarInput() {
                         </MenuButton>
                         <MenuList>
                             <MenuGroup title='Search By'>
-                                <RadioGroup colorScheme='teal' onChange={setValue} value={value}>
+                                <RadioGroup colorScheme='teal' onChange={setSearchCategory} value={selectSearchCategory}>
                                     <Stack direction='column' p={2}>
-                                        <Radio value='1'>Title</Radio>
-                                        <Radio value='2'>Author</Radio>
-                                        <Radio value='3'>Genre</Radio>
-                                        <Radio value='4'>Theme</Radio>
+                                        <Radio value='title'>Title</Radio>
+                                        <Radio value='author'>Author</Radio>
+                                        <Radio value='genre'>Genre</Radio>
+                                        <Radio value='theme'>Theme</Radio>
                                     </Stack>
                                 </RadioGroup>
                             </MenuGroup>
