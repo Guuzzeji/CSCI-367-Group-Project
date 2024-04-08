@@ -1,0 +1,28 @@
+.SearchBox {
+    width: 40vw;
+    /* Default width for larger screens */
+}
+
+/* Media query for smaller screens (phones) */
+@media only screen and (max-width: 767px) {
+    .SearchBox {
+        width: 90vw;
+        /* Adjust width for phones */
+    }
+}
+
+/* Media query for medium screens (tablets) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .SearchBox {
+        width: 70vw;
+        /* Adjust width for tablets */
+    }
+}
+
+/* Media query for larger screens (desktops) */
+@media only screen and (min-width: 1024px) {
+    .SearchBox {
+        width: 40vw;
+        /* Maintain default width for desktops */
+    }
+}
