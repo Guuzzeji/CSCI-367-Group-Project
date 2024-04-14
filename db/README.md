@@ -19,9 +19,9 @@ Before you begin, ensure you have Docker Desktop installed on your machine. Foll
     - Inside the `db` folder, create a file named `.env`.
     - Add the following environment variables to the `.env` file:
     ```plaintext
-    USER_PWD=pwd12345
-    USER_NAME=exampleUser
-    ROOT_PWD=rootpassword
+    MYSQL_PASSWORD=pwd12345
+    MYSQL_USER=exampleUser
+    MYSQL_ROOT_PASSWORD=rootpassword
     ```
 
 2. **Run the Server:**
