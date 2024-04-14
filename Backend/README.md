@@ -51,16 +51,25 @@ Use this to test connection of web server.
 
 It's recommended to use a virtual environment to manage project dependencies and isolate them from the global Python environment.
 
-1. Create a virtual environment named `venv`:
+### 1. Create a virtual environment named `venv`:
 
 ```bash
 python -m venv venv
 ```
 
-2. Activate the virtual environment:
+### 2. Activate the virtual environment:
 
-- On Windows: `venv\Scripts\activate`
-- MacOS / Linux: `source venv/bin/activate`
+**On Windows:**
+
+```bash
+venv\Scripts\activate
+```
+
+**MacOS / Linux:**
+
+```bash
+source venv/bin/activate
+```
 
 ## Installing Dependencies
 
