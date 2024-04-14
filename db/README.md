@@ -1,6 +1,6 @@
 # MySQL Database
 
-This is MySQL database used to store manga information that was previously stored in .csv files. The database is running on port 3306.
+This is MySQL database used to store manga information that was previously stored in .csv files. The database is running on port 4040.
 
 ## Setup Instructions
 
@@ -27,7 +27,7 @@ Before you begin, ensure you have Docker Desktop installed on your machine. Foll
 2. **Run the Server:**
     - Open a terminal and navigate to the root directory of this repository.
     - Run the following command to start the MySQL server using Docker Compose:
-    - This will have the server running on `localhost:3306`
+    - This will have the server running on `localhost:4040`
     ```sh
     docker-compose --env-file path/to/.env up
     ```
