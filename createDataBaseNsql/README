@@ -3,6 +3,7 @@
 ## 1
 Make sure you create a schema for this project and add these tables:
 
+```
 -- Create Manga Table
 CREATE TABLE Manga (
     bookid INT PRIMARY KEY,
@@ -64,6 +65,7 @@ CREATE table Ratings (
     score DECIMAL(10,2),
     FOREIGN KEY (bookid) REFERENCES Manga(bookid)
 );
+```
 
 ## 2
 To run the DatabaseWriter, you need to install python (obv) and in case you need other libraries like requests or datetime, in cmd prompt, write: 
