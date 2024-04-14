@@ -2,6 +2,7 @@ from flask import Flask
 
 from router.test import test
 from router.api import api
+from router.error import not_found, server_error
 
 # Loading .env file
 from config_env import config_env
@@ -9,20 +10,8 @@ from config_env import config_env
 app = Flask(__name__)
 app.register_blueprint(test)
 app.register_blueprint(api)
-
-@app.errorhandler(404)
-def not_found(e):
-      return {
-            "status": 404,
-            "error": "page does not exist"
-      }
-
-@app.errorhandler(503)
-def server_error(e):
-      return {
-            "status": 503,
-            "error": "server issues :("
-      }
+app.register_error_handler(404, not_found)
+app.register_error_handler(503, server_error)
 
 if __name__ == '__main__':
     print("Running Server --> "
