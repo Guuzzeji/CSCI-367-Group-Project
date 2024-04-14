@@ -30,5 +30,3 @@ networks:
 volumes:
   mysql-data:
     driver: local
-  mysql-data:
-    driver: local
