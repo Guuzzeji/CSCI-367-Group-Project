@@ -173,9 +173,10 @@ def insertDataMisc(table_name, data, column_names):
 # Change this to your guys' shit
 connection = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="CertainDoom",
-    database="mangatables"
+    port=4040,
+    user="pwd12345",
+    password="exampleUser",
+    database="manga_db"
 )
 
 cursor = connection.cursor()
