@@ -1,0 +1,73 @@
+.Background {
+    background-image: url("/public/backdrop.webp");
+    background-size: 300px;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: repeat;
+}
+
+.BackgroundOverlay {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.75);
+    background-repeat: repeat;
+}
+
+.CenterSearch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 80vh;
+    /* Default min-height for larger screens */
+    flex-direction: column;
+}
+
+.LogoText {
+    font-family: "Monoton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    user-select: none;
+    font-size: 80px;
+}
+
+/* Media query for smaller screens (phones) */
+@media only screen and (max-width: 767px) {
+    .CenterSearch {
+        min-height: 60vh;
+        /* Adjust min-height for smaller screens */
+    }
+
+    .LogoText {
+        font-size: 40px;
+    }
+}
+
+/* Media query for medium screens (tablets) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .CenterSearch {
+        min-height: 70vh;
+        /* Adjust min-height for tablets */
+    }
+
+    .LogoText {
+        font-size: 65px;
+    }
+}
+
+/* Media query for larger screens (desktops) */
+@media only screen and (min-width: 1024px) {
+    .CenterSearch {
+        min-height: 80vh;
+        /* Maintain default min-height for desktops */
+    }
+
+    .LogoText {
+        font-size: 80px;
+    }
+}
