@@ -89,9 +89,12 @@ MYSQL_PASSWORD=pwd12345
 MYSQL_HOST=localhost
 MYSQL_DATABASE=manga_db
 MYSQL_PORT=3306
+FLASK_DEBUG=true
 ```
 
-**Note**: Avoid changing MYSQL_DATABASE unless you know what you're doing.
+**Note**: 
+- Avoid changing MYSQL_DATABASE unless you know what you're doing.
+- Set `FLASK_DEBUG` to true if you are making changes to the web server
 
 ## Run / Start Server
 

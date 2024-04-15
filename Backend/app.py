@@ -14,7 +14,5 @@ app.register_error_handler(404, not_found)
 app.register_error_handler(503, server_error)
 
 if __name__ == '__main__':
-    print("Running Server --> "
-          + "localhost:"
-          + "3030")
-    app.run(host="localhost", port=3030, debug=True)
+    print("[SERVER] Running Server --> localhost:3030")
+    app.run(host="localhost", port=3030, debug=config_env.get("FLASK_DEBUG"))
