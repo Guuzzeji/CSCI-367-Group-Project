@@ -174,8 +174,8 @@ def insertDataMisc(table_name, data, column_names):
 connection = mysql.connector.connect(
     host="localhost",
     port=4040,
-    user="pwd12345",
-    password="exampleUser",
+    user="root",
+    password="rootpassword",
     database="manga_db"
 )
 
