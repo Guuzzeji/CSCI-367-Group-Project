@@ -20,9 +20,10 @@ import { SearchIcon, SmallAddIcon } from '@chakra-ui/icons';
 import './SearchBarInput.css';
 
 function SearchBarInput() {
+    // Note for update of search should dvide up theme/genure base on spacing
     const [selectSearchCategory, setSearchCategory] = React.useState('title');
     const [userSearchQuery, setUserSearchQuery] = React.useState('');
-    const [isSending, setSending] = React.useState(false);
+    // const [isSending, setSending] = React.useState(false);
 
     let handleInputText = (e) => {
         let text = e.target.value;
