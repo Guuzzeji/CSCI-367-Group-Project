@@ -6,13 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-<<<<<<< WasTest
-=======
 ### `npm install`
 
 You need to install all dependencies and packages for this project in order for it to work.
-
->>>>>>> main
 
 ### `npm start`
 
