@@ -18,7 +18,7 @@ except mysql.connector.Error as err:
 
 else:
     ##bookid of manga from hyplerlink. Will be defined by html
-    selectedBookid = 2
+    selectedBookid = input()
     ##gets advance information of specified manga for page three
     pageThreeQuery =(
        'SELECT m.title, a.Name, m.publishedstart, m.publishedend, t.Type, g.Type, m.synopsis '

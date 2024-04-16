@@ -24,7 +24,7 @@ else:
 
    
     #search_type = getSpecifiedSearch()
-    search_type = "Theme"
+    search_type = "title"
 
     ##If statement for when adv search is by title
     if search_type == "title":
@@ -109,20 +109,20 @@ else:
 
 
 
-        ##PAGE 2 SELECT CODE
+    ##PAGE 2 SELECT CODE
 
-        # Fetch the results
+    # Fetch the results
 
-        result= searchCursor.fetchall()
+    result= searchCursor.fetchall()
 
 
-        ##if statement to see if anything was selected
-        if not result:
-            print("search not found")
-        else:
-            for x in result:
-                print(x)
+    ##if statement to see if anything was selected
+    if not result:
+        print("search not found")
+    else:
+        for x in result:
+            print(x)
 
-        reservationConnection.commit()
-        searchCursor.close()
-        reservationConnection.close()
+    reservationConnection.commit()
+    searchCursor.close()
+    reservationConnection.close()
