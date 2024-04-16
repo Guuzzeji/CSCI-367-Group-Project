@@ -1,7 +1,9 @@
-USE manga_db;
+#database
 
--- Create table stuff here
+## 1
+Make sure you create a schema for this project and add these tables:
 
+```
 -- Create Manga Table
 CREATE TABLE Manga (
     bookid INT PRIMARY KEY,
@@ -63,3 +65,16 @@ CREATE table Ratings (
     score DECIMAL(10,2),
     FOREIGN KEY (bookid) REFERENCES Manga(bookid)
 );
+```
+
+## 2
+To run the DatabaseWriter, you need to install python (obv) and in case you need other libraries like requests or datetime, in cmd prompt, write: 
+pip install whatever or if that doesnt work python -m pip install whatever
+Create a folder to put it in and run. EZ
+
+
+## 3
+To run the insertIntoSql file, make sure you've done the previous steps. If need be, change the paths to the csv files in the code. 
+Also make sure you change the connections to your own specific instances. 
+
+
