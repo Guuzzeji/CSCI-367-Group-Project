@@ -32,4 +32,3 @@ Before you begin, ensure you have Docker Desktop installed on your machine. Foll
     docker-compose --env-file path/to/.env up
     ```
     Replace `path/to/.env` with the actual path to your `.env` file.
-

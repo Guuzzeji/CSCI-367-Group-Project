@@ -22,40 +22,98 @@ else:
     print('Input Search ', end = '')
     search = input()
 
-    ##gets a the category of search
+   
     #search_type = getSpecifiedSearch()
-    search_type = "title"
-    ##get what table to look through
+    search_type = "Theme"
+
+    ##If statement for when adv search is by title
     if search_type == "title":
         table_name = "Manga"
+
+        searchQuery = """
+        SELECT m.imgurl, m.title
+        FROM {} m
+        WHERE m.title = %s
+        OR m.title LIKE %s 
+        OR m.title LIKE %s
+        ORDER BY CASE
+        WHEN m.title = %s then 1
+        WHEN m.title LIKE %s then 2
+        WHEN m.title LIKE %s then 3
+        END
+        """.format(table_name)
+
+        searchCursor = reservationConnection.cursor()
+        searchCursor.execute(searchQuery, (search, f'{search}%', f'%{search}%', search, f'{search}%', f'%{search}%'))
+
+    ##If statement for when adv search is by author
     elif search_type == "Author":
         table_name = "Authors"
+        searchQuery = """
+        SELECT m.imgurl, m.title, a.name
+        FROM Author a
+        INNER JOIN Manga m on m.bookid = a.bookid
+        WHERE a.name = %s
+        OR a.name LIKE %s 
+        OR a.name LIKE %s
+        ORDER BY CASE
+		WHEN a.name = %s then 1
+		WHEN a.name LIKE %s then 2
+		WHEN a.name LIKE %s then 3
+		END,
+		m.title;
+        """.format(table_name)
+
+        searchCursor = reservationConnection.cursor()
+        searchCursor.execute(searchQuery, (search, f'{search}%', f'%{search}%', search, f'{search}%', f'%{search}%'))
+
+    ##If statement for when adv search is by genre  
     elif search_type == "Genre":
         table_name = "Genre"
+        searchQuery = """
+        SELECT m.imgurl, m.title, g.type
+        FROM Genre g
+        INNER JOIN Manga m on m.bookid = g.bookid
+        WHERE g.type = %s
+        OR g.type LIKE %s 
+        OR g.type LIKE %s
+        ORDER BY CASE
+		WHEN g.type = %s then 1
+		WHEN g.type LIKE %s then 2
+		WHEN g.type LIKE %s then 3
+		END,
+        m.title;
+        """.format(table_name)
+        searchCursor = reservationConnection.cursor()
+        searchCursor.execute(searchQuery, (search, f'{search}%', f'%{search}%', search, f'{search}%', f'%{search}%'))
+
+    ##If statement for when adv search is by theme
     elif search_type == "Theme":
         table_name = "Theme"
+        searchQuery = """
+        SELECT m.imgurl, m.title, t.type
+        FROM Theme t
+        INNER JOIN Manga m on m.bookid = t.bookid
+        WHERE t.type = %s
+        OR t.type LIKE %s 
+        OR t.type LIKE %s
+        ORDER BY CASE
+		WHEN t.type = %s then 1
+		WHEN t.type LIKE %s then 2
+		WHEN t.type LIKE %s then 3
+		END,
+        m.title;
+        """.format(table_name)
+        searchCursor = reservationConnection.cursor()
+        searchCursor.execute(searchQuery, (search, f'{search}%', f'%{search}%', search, f'{search}%', f'%{search}%'))
 
-    searchCursor = reservationConnection.cursor()
+
 
     ##PAGE 2 SELECT CODE
-    searchQuery = """
-    SELECT m.imgurl, m.title
-    FROM {} m
-    WHERE m.title = %s
-    OR m.title LIKE %s 
-    OR m.title LIKE %s
-    ORDER BY CASE
-    WHEN m.title = %s then 1
-    WHEN m.title LIKE %s then 2
-    WHEN m.title LIKE %s then 3
-    """.format(table_name)
-
-    # Execute the query with user input as parameters
-    searchCursor.execute(searchQuery, (search, f'{search}%', f'%{search}%', search, f'{search}%', f'%{search}%'))
 
     # Fetch the results
 
-    result= select.fetchall()
+    result= searchCursor.fetchall()
 
 
     ##if statement to see if anything was selected
