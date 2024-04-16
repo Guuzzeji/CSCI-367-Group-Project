@@ -1,5 +1,6 @@
 from flask import Blueprint, Response, request
-from db.mysql import get_manga_info, search_for_manga
+from db.get_manga_details import get_manga_details
+from db.search_for_manga import search_for_manga
 
 # ! == About ==
 # This is our API endpoints for the web server, this connects and hands request made from client to use items in the database

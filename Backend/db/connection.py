@@ -4,6 +4,9 @@ import sys
 
 from config_env import config_env
 
+# ! == About ==
+# Handle connection between web server and MySQL database and allow other module to use connection const
+
 # Creating connection
 CONNECTION_TO_DB = None
 try:
@@ -27,24 +30,3 @@ if CONNECTION_TO_DB is None:
 def close_db_connection_handle():
     print("[DB] Killing db connection...")
     CONNECTION_TO_DB.close()
-
-# NOTE: Should return info and other data from db as a dictionary 
-def get_manga_info(book_id: int):
-    cursor = CONNECTION_TO_DB.cursor()
-
-    # query code goes here
-
-    cursor.close()
-    return {
-        "nothing": "need to create func"
-    }
-
-def search_for_manga(search_type: str, last_book_id: int, query: str):
-    cursor = CONNECTION_TO_DB.cursor()
-
-    # query code goes here
-
-    cursor.close()
-    return {
-        "nothing": "need to create func"
-    }
