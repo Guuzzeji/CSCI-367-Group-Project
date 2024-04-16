@@ -7,6 +7,9 @@ from router.error import not_found, server_error
 # Loading .env file
 from config_env import config_env
 
+# ! == About ==
+# In charge of running server and store Flask App
+
 app = Flask(__name__)
 app.register_blueprint(test)
 app.register_blueprint(api)

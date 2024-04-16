@@ -1,3 +1,6 @@
+# ! == About ==
+# This handles errors for 404 and 503 when they happen, send responese as JSON
+
 # 404
 def not_found(e):
       return {

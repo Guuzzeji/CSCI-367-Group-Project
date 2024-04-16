@@ -2,6 +2,9 @@ import os
 import sys
 from dotenv import load_dotenv
 
+# ! == About ==
+# In charge of loading .env file and converting it into a dictionary that can be used to look up variables
+
 is_load_env = load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 if not is_load_env:
