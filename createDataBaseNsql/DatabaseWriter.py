@@ -31,7 +31,7 @@ def writeToCsv(filename, fieldnames, rows, mode='w'):
             writer.writeheader()
         writer.writerows(rows)
 
-
+# Checks if there is a star character in the name and returns the english title. 
 def choose_title(manga):
     if '☆' in manga['title']:
         return manga['title_english']
