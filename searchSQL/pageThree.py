@@ -3,7 +3,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 try:
-  reservationConnection = mysql.connector.connect(   host="localhost",user="pwd12345",password="exampleUser",
+  reservationConnection = mysql.connector.connect(   host="localhost",user="root",password="rootpassword",
         database="manga_db",
         port="4040"
     )
@@ -18,15 +18,20 @@ except mysql.connector.Error as err:
 
 else:
     ##bookid of manga from hyplerlink. Will be defined by html
-    selectedBookid = input()
+    #selectedBookid = input()
+    selectedBookid = input("Enter id: ")
     ##gets advance information of specified manga for page three
-    pageThreeQuery =(
-       'SELECT m.title, a.Name, m.publishedstart, m.publishedend, t.Type, g.Type, m.synopsis '
-        'FROM Manga m '
-        'INNER JOIN Author a ON a.bookid = m.bookid '
-        'INNER JOIN Theme t ON t.bookid = a.bookid '
-        'INNER JOIN Genre g ON g.bookid = t.bookid '
-        'WHERE m.bookid = %s')
+    pageThreeQuery =( '''
+                    SELECT DISTINCT m.title, a.Name, m.publishedstart, m.publishedend,
+                    GROUP_CONCAT(DISTINCT t.type SEPARATOR ', ') AS themes,
+                    GROUP_CONCAT(DISTINCT g.type SEPARATOR ', ') AS genres,
+                    m.synopsis
+                    FROM Manga m
+                    INNER JOIN Author a ON a.bookid = m.bookid
+                    INNER JOIN Theme t ON t.bookid = a.bookid
+                    INNER JOIN Genre g ON g.bookid = t.bookid
+                    WHERE m.bookid = %s
+                    GROUP BY m.title, a.Name, m.publishedstart, m.publishedend, m.synopsis''')
 
 
     searchCursor = reservationConnection.cursor()
@@ -39,6 +44,7 @@ else:
         for item in x:
             print(item)
         print()
+
 
     reservationConnection.commit()
     searchCursor.close()

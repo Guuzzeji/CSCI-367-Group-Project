@@ -3,7 +3,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 try:
-  reservationConnection = mysql.connector.connect(   host="localhost",user="pwd12345",password="exampleUser",
+  reservationConnection = mysql.connector.connect(   host="localhost",user="root",password="rootpassword",
         database="manga_db",
         port="4040"
     )
