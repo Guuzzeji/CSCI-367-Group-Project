@@ -32,6 +32,11 @@ def writeToCsv(filename, fieldnames, rows, mode='w'):
         writer.writerows(rows)
 
 
+def choose_title(manga):
+    if '☆' in manga['title']:
+        return manga['title_english']
+    else:
+        return manga['title']
 
 
 def main():
@@ -47,7 +52,7 @@ def main():
                 manga_data = {
                 "bookid": manga['mal_id'],
                 "myanimelisturl": manga['url'],
-                "title": manga['title'],
+                "title": choose_title(manga),
                 "imgurl": manga['images']['jpg']['large_image_url'],
                 "chapters": manga['chapters'],
                 "volumes": manga['volumes'],
