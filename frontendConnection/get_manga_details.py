@@ -1,6 +1,3 @@
-import mysql.connector
-import atexit 
-import sys
 from frontendConnection.connection import CONNECTION_TO_DB
 # from searchSQL.pageThree import getMangaDetails
 
