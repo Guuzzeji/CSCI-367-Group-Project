@@ -1,4 +1,4 @@
-from frontendConnection.connection import CONNECTION_TO_DB
+from connection import CONNECTION_TO_DB
 
 
 # ! == About ==
