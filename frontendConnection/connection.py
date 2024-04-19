@@ -2,7 +2,7 @@ import mysql.connector
 import atexit 
 import sys
 
-from config_env import config_env
+# from config_env import config_env
 
 # ! == About ==
 # Handle connection between web server and MySQL database and allow other module to use connection const
@@ -11,11 +11,18 @@ from config_env import config_env
 CONNECTION_TO_DB = None
 try:
     CONNECTION_TO_DB = mysql.connector.connect(
-        host=config_env.get("MYSQL_HOST"),
-        user=config_env.get("MYSQL_USERNAME"),
-        password=config_env.get("MYSQL_PASSWORD"),
-        database=config_env.get("MYSQL_DATABASE"),
-        port=config_env.get("MYSQL_PORT")
+        
+        #host=config_env.get("MYSQL_HOST"),
+        #user=config_env.get("MYSQL_USERNAME"),
+        #password=config_env.get("MYSQL_PASSWORD"),
+        #database=config_env.get("MYSQL_DATABASE"),
+        #port=config_env.get("MYSQL_PORT")
+        
+        host="localhost",
+        user="root",
+        password="rootpassword",
+        database="manga_db",
+        port=4040
     )
 except mysql.connector.Error as err:
     print("[ERROR] " + str(err))

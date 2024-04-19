@@ -2,29 +2,31 @@ import select
 import mysql.connector
 from mysql.connector import errorcode
 
+
 try:
-  reservationConnection = mysql.connector.connect(   host="localhost",user="root",password="rootpassword",
-        database="manga_db",
-        port="4040"
-    )
+    reservationConnection = mysql.connector.connect(   host="localhost",user="root",password="rootpassword",
+            database="manga_db",
+            port="4040"
+        )
 
 except mysql.connector.Error as err:
-   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-      print('Invalid credentials')
-   elif err.errno == errorcode.ER_BAD_DB_ERROR:
-      print('Database not found')
-   else:
-      print('Cannot connect to database:', err)
+    if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+        print('Invalid credentials')
+    elif err.errno == errorcode.ER_BAD_DB_ERROR:
+        print('Database not found')
+    else:
+        print('Cannot connect to database:', err)
 
 else:
-   	##gets user search
+    ##gets user search
 
     print('Input Search ', end = '')
     search = input()
 
-   
+
     #search_type = getSpecifiedSearch()
-    search_type = "title"
+    #search_type = "title"
+    search_type = input()
 
     ##If statement for when adv search is by title
     if search_type == "title":
@@ -57,11 +59,11 @@ else:
         OR a.name LIKE %s 
         OR a.name LIKE %s
         ORDER BY CASE
-		WHEN a.name = %s then 1
-		WHEN a.name LIKE %s then 2
-		WHEN a.name LIKE %s then 3
-		END,
-		m.title;
+        WHEN a.name = %s then 1
+        WHEN a.name LIKE %s then 2
+        WHEN a.name LIKE %s then 3
+        END,
+        m.title;
         """.format(table_name)
 
         searchCursor = reservationConnection.cursor()
@@ -78,10 +80,10 @@ else:
         OR g.type LIKE %s 
         OR g.type LIKE %s
         ORDER BY CASE
-		WHEN g.type = %s then 1
-		WHEN g.type LIKE %s then 2
-		WHEN g.type LIKE %s then 3
-		END,
+        WHEN g.type = %s then 1
+        WHEN g.type LIKE %s then 2
+        WHEN g.type LIKE %s then 3
+        END,
         m.title;
         """.format(table_name)
         searchCursor = reservationConnection.cursor()
@@ -98,10 +100,10 @@ else:
         OR t.type LIKE %s 
         OR t.type LIKE %s
         ORDER BY CASE
-		WHEN t.type = %s then 1
-		WHEN t.type LIKE %s then 2
-		WHEN t.type LIKE %s then 3
-		END,
+        WHEN t.type = %s then 1
+        WHEN t.type LIKE %s then 2
+        WHEN t.type LIKE %s then 3
+        END,
         m.title;
         """.format(table_name)
         searchCursor = reservationConnection.cursor()
@@ -109,11 +111,12 @@ else:
 
 
 
-    ##PAGE 2 SELECT CODE
+        ##PAGE 2 SELECT CODE
 
-    # Fetch the results
+        # Fetch the results
 
     result= searchCursor.fetchall()
+       
 
 
     ##if statement to see if anything was selected

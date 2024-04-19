@@ -2,24 +2,25 @@ import select
 import mysql.connector
 from mysql.connector import errorcode
 
+
 try:
-  reservationConnection = mysql.connector.connect(   host="localhost",user="root",password="rootpassword",
-        database="manga_db",
-        port="4040"
-    )
+    reservationConnection = mysql.connector.connect(   host="localhost",user="root",password="rootpassword",
+            database="manga_db",
+            port="4040"
+        )
 
 except mysql.connector.Error as err:
-   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-      print('Invalid credentials')
-   elif err.errno == errorcode.ER_BAD_DB_ERROR:
-      print('Database not found')
-   else:
-      print('Cannot connect to database:', err)
+    if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+        print('Invalid credentials')
+    elif err.errno == errorcode.ER_BAD_DB_ERROR:
+        print('Database not found')
+    else:
+        print('Cannot connect to database:', err)
 
 else:
     ##bookid of manga from hyplerlink. Will be defined by html
-    #selectedBookid = input()
-    selectedBookid = input("Enter id: ")
+    selectedBookid = input()
+    #selectedBookid = bookid
     ##gets advance information of specified manga for page three
     pageThreeQuery =( '''
                     SELECT DISTINCT m.title, a.Name, m.publishedstart, m.publishedend,

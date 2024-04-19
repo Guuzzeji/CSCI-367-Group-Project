@@ -1,4 +1,5 @@
-from db.connection import CONNECTION_TO_DB
+from frontendConnection.connection import CONNECTION_TO_DB
+
 
 # ! == About ==
 # Handle search db for manga that meets search parms
@@ -11,6 +12,7 @@ def search_for_manga(search_type: str, last_book_id: int, query: str):
     cursor = CONNECTION_TO_DB.cursor()
 
     # query code goes here
+
 
     cursor.close()
     return {
