@@ -1,6 +1,8 @@
 from flask import Blueprint, Response, request
-# from frontendConnection.get_manga_details import get_manga_details
-# from frontendConnection.search_for_manga import search_for_manga
+from get_manga_details import get_manga_details
+from search_for_manga import search_for_manga
+import json
+from flask import jsonify
 
 # ! == About ==
 # This is our API endpoints for the web server, this connects and hands request made from client to use items in the database
@@ -13,10 +15,17 @@ api = Blueprint("api", __name__, url_prefix="/API")
 @api.route("/manga/<int:book_id>", methods=["GET"])
 def manga_info(book_id: int):
 
+    manga_details = get_manga_details(book_id)
+    if manga_details:
+        return manga_details, 200
+        # return manga_details, 200
+    else:
+        return jsonify({"error": "Manga not found"}), 404
+        #return {"error": "Manga not found"}, 404
     #! impliment get_manga_info
 
     # Placeholder code can remove
-    return Response("bookid = " + str(book_id), status=200, mimetype="text/plain")
+    #return Response("bookid = " + str(book_id), status=200, mimetype="text/plain")
 
 
 # ! == Query setup ==
@@ -29,6 +38,14 @@ def manga_info(book_id: int):
 def search():
 
     #! impliment search_for_manga
+    query = request.args.get("query")
+    search_type = request.args.get("type", "title")  # Default is title
+    last_book_id = request.args.get("lastbookid", 1)  # Default is 1
 
+    # Call search_for_manga function
+    search_result = search_for_manga(search_type, int(last_book_id), query)
+
+    # Return the search result as JSON
+    return jsonify(search_result), 200
     # Placeholder code can remove
-    return Response("args = " + str(request.args), status=200, mimetype="text/plain")
+    #return Response("args = " + str(request.args), status=200, mimetype="text/plain")

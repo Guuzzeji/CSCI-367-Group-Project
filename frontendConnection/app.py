@@ -1,8 +1,8 @@
 from flask import Flask
 
-from router.test import test
-from router.api import api
-from router.error import not_found, server_error
+from test import test
+from api import api
+from error import not_found, server_error
 
 # Loading .env file
 from config_env import config_env
