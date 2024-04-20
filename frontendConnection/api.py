@@ -42,10 +42,8 @@ def search():
     search_type = request.args.get("type", "title")  # Default is title
     last_book_id = request.args.get("lastbookid", 1)  # Default is 1
 
-    # Call search_for_manga function
     search_result = search_for_manga(search_type, int(last_book_id), query)
 
-    # Return the search result as JSON
     return jsonify(search_result), 200
     # Placeholder code can remove
     #return Response("args = " + str(request.args), status=200, mimetype="text/plain")

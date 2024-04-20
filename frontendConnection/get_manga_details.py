@@ -31,7 +31,8 @@ def get_manga_details(book_id: int):
     # query code goes here
     if results:
         for result in results:
-            # Construct a dictionary with column names as keys
+            # Constructs a dictionary with column names as keys
+            '''
             published_start = result[2]
             if published_start is not None:
                 published_start = result[2]
@@ -41,12 +42,12 @@ def get_manga_details(book_id: int):
             if published_end is not None:
                 published_end = result[3]
             else:
-                published_end = None
+                published_end = None'''
             manga_details = {
                 "title": result[0],
                 "author": result[1],
-                "published_start": published_start,
-                "published_end": published_end,
+                "published_start": result[2], #published_start,
+                "published_end": result[3], #published_end,
                 "themes": result[4],
                 "genres": result[5],
                 "synopsis": result[6]
