@@ -17,13 +17,16 @@ import {
 } from '@chakra-ui/react';
 import { SearchIcon, SmallAddIcon } from '@chakra-ui/icons';
 
+import { useNavigate } from 'react-router-dom';
+
 import './SearchBarInput.css';
 
 function SearchBarInput() {
     // Note for update of search should dvide up theme/genure base on spacing
     const [selectSearchCategory, setSearchCategory] = React.useState('title');
     const [userSearchQuery, setUserSearchQuery] = React.useState('');
-    // const [isSending, setSending] = React.useState(false);
+
+    const navigate = useNavigate();
 
     let handleInputText = (e) => {
         let text = e.target.value;
@@ -31,10 +34,16 @@ function SearchBarInput() {
     };
 
     let handleInputEnter = (e) => {
-        if (e.key === 'Enter') {
-            // TODO: Connect to backend and use isSending to handle disabling of user input to backend to block spamming
-            console.log("User has inputed a value for to search", userSearchQuery);
+        if (e.key === 'Enter' && userSearchQuery !== '' && userSearchQuery !== null) {
+            e.preventDefault();
+            navToSearchResultPage(userSearchQuery, selectSearchCategory);
+            // console.log(userSearchQuery);
         }
+    };
+
+    let navToSearchResultPage = (query, type) => {
+        let queryUrl = `query=${query}&type=${type}`;
+        navigate("/result/?" + queryUrl);
     };
 
     return (
@@ -62,9 +71,9 @@ function SearchBarInput() {
                                 <RadioGroup colorScheme='teal' onChange={setSearchCategory} value={selectSearchCategory}>
                                     <Stack direction='column' p={2}>
                                         <Radio value='title'>Title</Radio>
-                                        <Radio value='author'>Author</Radio>
-                                        <Radio value='genre'>Genre</Radio>
-                                        <Radio value='theme'>Theme</Radio>
+                                        <Radio value='Author'>Author</Radio>
+                                        <Radio value='Genre'>Genre</Radio>
+                                        <Radio value='Theme'>Theme</Radio>
                                     </Stack>
                                 </RadioGroup>
                             </MenuGroup>
