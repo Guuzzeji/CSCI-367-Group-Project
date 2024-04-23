@@ -16,17 +16,18 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='result/*'
         loader={({ request }) => {
-          console.log(request);
-          return { data: "example" };
+          let url = new URL(request.url);
+          console.log(url);
+          return fetch(`http://localhost:3030/API/search${url.search}`);
         }}
         element={<Result />} />
       <Route
         path='manga/:bookid'
         loader={({ params }) => {
-          console.log(params);
-          return { data: "example" };
+          return fetch(`http://localhost:3030/API/manga/${params.bookid}`);
         }}
         element={<Manga />} />
+
     </Route>
   )
 );

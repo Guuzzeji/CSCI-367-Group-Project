@@ -4,13 +4,12 @@ import { Text, ScaleFade } from '@chakra-ui/react';
 import { useLoaderData } from 'react-router-dom';
 
 function Manga() {
-    const state = useLoaderData();
-
-    console.log(state);
+    const resData = useLoaderData();
+    console.log(resData);
 
     return (
         <div>
-            Manga page {state.data}
+            Manga page {String(resData)}
         </div>
     );
 }
