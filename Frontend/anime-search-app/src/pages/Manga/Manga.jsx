@@ -7,6 +7,9 @@ function Manga() {
     const resData = useLoaderData();
     console.log(resData);
 
+    //TODO: Impliment json from resData
+    //TODO: Handle error of new resData is found / is empty
+
     return (
         <div>
             Manga page {String(resData)}
