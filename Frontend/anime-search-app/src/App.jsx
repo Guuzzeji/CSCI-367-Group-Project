@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 import Home from './pages/Home/Home';
 import Result from './pages/Result/Result';
 import Manga from './pages/Manga/Manga';
+import NotFoundError from './pages/NotFoundError/NotFoundError';
 
 // TODO: Create search result page 
 // TODO: Create page for specifc book
@@ -27,7 +28,7 @@ const router = createBrowserRouter(
           return fetch(`http://localhost:3030/API/manga/${params.bookid}`);
         }}
         element={<Manga />} />
-
+      <Route path='*' element={<NotFoundError />} />
     </Route>
   )
 );
