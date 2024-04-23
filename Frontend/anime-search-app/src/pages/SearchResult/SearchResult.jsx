@@ -4,7 +4,7 @@ import { Text, ScaleFade } from '@chakra-ui/react';
 
 import { useLoaderData } from 'react-router-dom';
 
-function Result() {
+function SearchResult() {
     const resData = useLoaderData();
     console.log(resData);
 
@@ -15,4 +15,4 @@ function Result() {
     );
 }
 
-export default Result;
+export default SearchResult;
