@@ -4,6 +4,9 @@ import { Text, ScaleFade } from '@chakra-ui/react';
 
 import { useLoaderData } from 'react-router-dom';
 
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 function SearchResult() {
     const resData = useLoaderData();
     console.log(resData);
