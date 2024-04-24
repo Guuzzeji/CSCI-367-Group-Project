@@ -1,0 +1,78 @@
+.Background {
+    background-image: url("/public/backdrop.webp");
+    background-repeat: repeat;
+}
+
+.BackgroundOverlay {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 5;
+    background-repeat: repeat;
+}
+
+.CenterScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    /* Default min-height for larger screens */
+    flex-direction: column;
+}
+
+.BigText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
+    font-weight: bold;
+    color: white;
+    user-select: none;
+    font-size: 45px;
+    padding: 25px;
+}
+
+.GifImage {
+    max-width: 50%;
+    height: auto;
+    max-height: 500px;
+}
+
+/* Media query for smaller screens (phones) */
+@media only screen and (max-width: 767px) {
+    .CenterScreen {
+        min-height: 80vh;
+        /* Adjust min-height for smaller screens */
+    }
+
+    .BigText {
+        font-size: 18px;
+    }
+}
+
+/* Media query for medium screens (tablets) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .CenterScreen {
+        min-height: 80vh;
+        /* Adjust min-height for tablets */
+    }
+
+    .BigText {
+        font-size: 45px;
+    }
+}
+
+/* Media query for larger screens (desktops) */
+@media only screen and (min-width: 1024px) {
+    .CenterScreen {
+        min-height: 80vh;
+        /* Maintain default min-height for desktops */
+    }
+
+    .BigText {
+        font-size: 45px;
+    }
+}
