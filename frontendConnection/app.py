@@ -6,11 +6,13 @@ from error import not_found, server_error
 
 # Loading .env file
 from config_env import config_env
+from flask_cors import CORS
 
 # ! == About ==
 # In charge of running server and store Flask App
 
 app = Flask(__name__)
+CORS(app)
 app.register_blueprint(test)
 app.register_blueprint(api)
 app.register_error_handler(404, not_found)
