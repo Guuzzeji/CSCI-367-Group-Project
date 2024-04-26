@@ -12,7 +12,7 @@ config_env = {
     "MYSQL_HOST": "localhost",
     "MYSQL_DATABASE": "manga_db",
     "MYSQL_PORT": 4040,
-    "FLASK_DEBUG": False
+    "FLASK_DEBUG": True,
 }
 
 

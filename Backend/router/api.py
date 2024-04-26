@@ -31,12 +31,12 @@ def manga_info(book_id: int):
 # - query = user search term, this is required to run
 @api.route("/search", methods=["GET"])
 def search():
-
-    #! impliment search_for_manga
     query = request.args.get("query")
     search_type = request.args.get("type", "title")  # Default is title
-    last_book_id = request.args.get("lastbookid", 1)  # Default is 1
 
-    search_result = search_for_manga(search_type, int(last_book_id), query)
+    # ! Note using lask book id
+    # last_book_id = request.args.get("lastbookid", 1)  # Default is 1 
+
+    search_result = search_for_manga(search_type, query)
 
     return jsonify(search_result), 200
