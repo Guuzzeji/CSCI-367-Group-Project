@@ -12,7 +12,7 @@ def get_manga_details(book_id: int):
 
     page_three_query = '''
             SELECT DISTINCT m.title, a.Name, DATE_FORMAT(m.publishedstart, '%m/%d/%Y') AS published_start,
-            DATE_FORMAT(m.publishedend, '%m/%d/%Y') AS published_end,
+            DATE_FORMAT(m.publishedend, '%m/%d/%Y') AS published_end, m.imgurl,
             GROUP_CONCAT(DISTINCT t.type SEPARATOR ', ') AS themes,
             GROUP_CONCAT(DISTINCT g.type SEPARATOR ', ') AS genres,
             m.synopsis
@@ -48,9 +48,10 @@ def get_manga_details(book_id: int):
                 "author": result[1],
                 "published_start": result[2], #published_start,
                 "published_end": result[3], #published_end,
-                "themes": result[4],
-                "genres": result[5],
-                "synopsis": result[6]
+                "image": result[4],
+                "themes": result[5],
+                "genres": result[6],
+                "synopsis": result[7]
             }
             manga_details_list.append(manga_details)
     else:

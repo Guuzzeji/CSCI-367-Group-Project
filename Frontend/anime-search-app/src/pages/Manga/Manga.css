@@ -1,0 +1,16 @@
+.manga-title {
+    font-size: 24px;
+    color: #333;
+    margin-top: 0; 
+    margin-bottom: 10px;
+}
+
+.manga-details {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.manga-image {
+    margin-left: 20px; 
+}
