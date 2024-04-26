@@ -15,7 +15,9 @@ def get_manga_details(book_id: int):
             DATE_FORMAT(m.publishedend, '%m/%d/%Y') AS published_end,
             GROUP_CONCAT(DISTINCT t.type SEPARATOR ', ') AS themes,
             GROUP_CONCAT(DISTINCT g.type SEPARATOR ', ') AS genres,
-            m.synopsis
+            m.synopsis,
+            m.imgurl,
+            m.myanimelisturl
             FROM Manga m
             INNER JOIN Author a ON a.bookid = m.bookid
             INNER JOIN Theme t ON t.bookid = a.bookid
@@ -50,7 +52,9 @@ def get_manga_details(book_id: int):
                 "published_end": result[3], #published_end,
                 "themes": result[4],
                 "genres": result[5],
-                "synopsis": result[6]
+                "synopsis": result[6],
+                "imgurl": result[7],
+                "myanimelisturl": result[8]
             }
             manga_details_list.append(manga_details)
     else:

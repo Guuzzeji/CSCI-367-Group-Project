@@ -14,7 +14,22 @@ This web server is designed to act as an intermediary between the frontend and M
 
 **Response:**
 
-> Need to implement
+```json
+[
+    {
+        imgurl: string,
+        title: string,
+        genres: string,
+        author: string,
+        published_end: string,
+        published_start: string,
+        themes: string | "null",
+        synopsis: string,
+        imgurl: string,
+        myanimelisturl: string
+    }
+]
+```
 
 This endpoint retrieves more information about a specific manga based on its `book_id`, which corresponds to an ID within the MySQL database.
 
@@ -22,11 +37,23 @@ This endpoint retrieves more information about a specific manga based on its `bo
 
 ### GET: `/API/search`
 
-**Example:** `/API/search?query=helloworld&type=author&lastbookid=10`
+**Example:** `/API/search?query=helloworld&type=author`
 
-**Response:**
+**Response: JSON**
 
-> Need to implement
+```json
+[
+    {
+        bookid: number,
+        imgurl: string,
+        title: string,
+        type: string | undefined,
+        author string | undefined
+    }
+    ...
+]
+```
+
 
 This endpoint is a query URL used to search for manga in the database based on given parameters:
 - **type**: title | author | theme | genre (default is title)
