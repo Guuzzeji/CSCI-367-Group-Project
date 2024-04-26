@@ -9,7 +9,7 @@ import {
 import './Home.css';
 import icon_image from './gojo-home.gif';
 import icon_image2 from './robinFace.png';
-import icon_image3 from './funny-face.png';
+import icon_image3 from './funny-face.jpg';
 
 
 import SearchBarInput from '../../components/searchbarinput/SearchBarInput';
