@@ -1,16 +1,22 @@
 .manga-title {
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
     margin-top: 0; 
     margin-bottom: 10px;
 }
 
 .manga-details {
     font-size: 16px;
-    color: #666;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
 .manga-image {
-    margin-left: 20px; 
+    margin-left: 50px; 
+}
+
+.background {
+    background-image: url("../Manga/backgroundmanga1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
