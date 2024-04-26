@@ -14,9 +14,11 @@ function SearchResult() {
     //TODO: Impliment stuff with resData
     //TODO: Handle possible error of no resData or it is empty
 
+
+
     return (
         <div>
-            Result page {String(resData)}
+            Result page {String(resData[0].title)}
         </div>
     );
 }

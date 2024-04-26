@@ -4,13 +4,14 @@ import { Text, ScaleFade } from '@chakra-ui/react';
 import { useLoaderData } from 'react-router-dom';
 
 import './Manga.css'
+import { Divider } from '@chakra-ui/react'
+
+import NotFoundError from '../NotFoundError/NotFoundError';
 
 function Manga() {
+    try {
     const resData = useLoaderData();
 
-    if (!resData) {
-        return <div>Error: Manga not found</div>;
-    }
     console.log(resData);
 
     const manga = resData[0];
@@ -20,28 +21,38 @@ function Manga() {
 
     return (
         <div className='background'>
-        <div>
+            
+            <div className='container'>
+        
             {/*Manga page {String(resData)}*/}
-            <h1 className="manga-title">{manga.title}</h1>
-            <img className="manga-image" src={manga.image} alt={manga.title} style={{ maxWidth: '300px' }} /> 
-            <p className='manga-details'>Author: {manga.author}</p>
-            <p className='manga-details'>Genres: {manga.genres}</p>
-            <p className='manga-details'>Published: {manga.published_start} - {manga.published_end}</p>
-            <p className='manga-details'>Themes: {manga.themes}</p>
-            <p className='manga-details'>Synopsis: {manga.synopsis}</p>
-        </div>
+            
+            <div className="manga-image">
+                <h1 className="manga-title">{manga.title}</h1>
+                <img src={manga.image} alt={manga.title} style={{ maxWidth: '300px' }} /> 
+            </div>
+            <div className="speech-bubble">
+                <p className='manga-details'>Author: {manga.author}</p>
+                <Divider orientation='horizontal' />
+                <p className='manga-details'>Genres: {manga.genres}</p>
+                <Divider orientation='horizontal' />
+                <p className='manga-details'>Published: {manga.published_start} - {manga.published_end}</p>
+                <Divider orientation='horizontal' />
+                <p className='manga-details'>Themes: {manga.themes}</p>
+                <Divider orientation='horizontal' />
+                <p className='manga-details'>Synopsis: {manga.synopsis}</p> 
+            </div>
+            </div>
         </div>
     );
+    } catch(error) {
+        console.error('Error in Manga component:', error);
+        return NotFoundError();
+    }
 
     //TODO: Impliment json from resData
     //TODO: Handle error of new resData is found / is empty
 
-    return (
-        <div>
-            {/*Manga page {String(resData)}*/}
-
-        </div>
-    );
+    
 }
 
 export default Manga;
