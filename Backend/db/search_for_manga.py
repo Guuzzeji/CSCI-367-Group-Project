@@ -1,4 +1,4 @@
-from connection import CONNECTION_TO_DB
+from db.connection import CONNECTION_TO_DB
 
 
 # ! == About ==
