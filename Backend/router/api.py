@@ -1,6 +1,6 @@
 from flask import Blueprint, request
-from get_manga_details import get_manga_details
-from search_for_manga import search_for_manga
+from db.get_manga_details import get_manga_details
+from db.search_for_manga import search_for_manga
 from flask import jsonify
 
 # ! == About ==
