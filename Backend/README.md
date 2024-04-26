@@ -79,23 +79,6 @@ After activating the virtual environment, install the required packages using th
 pip install -r requirements.txt
 ```
 
-## How to Run the Web Server
-
-Create a .env file at the root of the folder and define the following variables. These variables should match those defined for the MySQL Docker image or the username and password you've set for the MYSQL_DATABASE.
-
-```env
-MYSQL_USERNAME=exampleUser
-MYSQL_PASSWORD=pwd12345
-MYSQL_HOST=localhost
-MYSQL_DATABASE=manga_db
-MYSQL_PORT=3306
-FLASK_DEBUG=true
-```
-
-**Note**: 
-- Avoid changing MYSQL_DATABASE unless you know what you're doing.
-- Set `FLASK_DEBUG` to true if you are making changes to the web server
-
 ## Run / Start Server
 
 Execute the following command to start the server and will run on `localhost:3030`:
