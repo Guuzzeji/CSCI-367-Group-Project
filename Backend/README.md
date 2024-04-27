@@ -14,7 +14,7 @@ This web server is designed to act as an intermediary between the frontend and M
 
 **Response:**
 
-```json
+```txt
 [
     {
         imgurl: "string",
@@ -41,7 +41,7 @@ This endpoint retrieves more information about a specific manga based on its `bo
 
 **Response: JSON**
 
-```json
+```txt
 [
     {
         bookid: 0,
