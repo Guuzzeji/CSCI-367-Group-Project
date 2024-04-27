@@ -17,16 +17,16 @@ This web server is designed to act as an intermediary between the frontend and M
 ```json
 [
     {
-        imgurl: string,
-        title: string,
-        genres: string,
-        author: string,
-        published_end: string,
-        published_start: string,
-        themes: string | "null",
-        synopsis: string,
-        imgurl: string,
-        myanimelisturl: string
+        imgurl: "string",
+        title: "string",
+        genres: "string",
+        author: "string",
+        published_end: "string",
+        published_start: "string",
+        themes: "string" | "null",
+        synopsis: "string",
+        imgurl: "string",
+        myanimelisturl: "string",
     }
 ]
 ```
@@ -44,11 +44,11 @@ This endpoint retrieves more information about a specific manga based on its `bo
 ```json
 [
     {
-        bookid: number,
-        imgurl: string,
-        title: string,
-        type: string | undefined,
-        author string | undefined
+        bookid: 0,
+        imgurl: "string",
+        title: "string",
+        type: "string" | undefined,
+        author: "string" | undefined
     }
     ...
 ]
