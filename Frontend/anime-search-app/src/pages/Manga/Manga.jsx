@@ -17,6 +17,7 @@ function Manga() {
 
     const manga = resData[0];
 
+    /*code to format authors name*/
     const formatAuthorName = (author) => {
         const splitName = author.split(", ");
         return `${splitName[1]} ${splitName[0]}`;
