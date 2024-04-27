@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Manga-Temple';
+    src: url('../Manga/mangat.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+
+.text {
+    font-family: 'Manga-Temple', sans-serif;
+}
+
 .manga-title {
     font-size: 24px;
     color: #000000;
@@ -7,6 +17,8 @@
     /*align-items: center;*/
     border-radius: 10px;
     background-color: #ffffff;
+    display: inline-block;
+    width: 300px;
     /*position: 'relative';*/
     /*display: inline-block;
     justify-self: center;
@@ -18,11 +30,16 @@
     color: #ffffff;
     margin-bottom: 10px;
     mix-blend-mode: difference;
+    margin-top: 10px;
 }
 
 .manga-image {
-    margin-left: 25px; 
-    justify-self: start
+    /*margin-left: 25px; 
+    justify-self: start;
+    align-items: center;*/
+    margin-left: 10px;
+    margin-right: auto;
+    display: block;
 }
 
 .container {
@@ -39,7 +56,7 @@
 .speech-bubble {
     position: relative;
     background-color: #fff; 
-    padding: 20px; /* Adjust padding as needed */
+    padding: 0px 10px; /* Adjust padding as needed */
     border-radius: 10px; /* Rounded corners */
     max-width: 99%; /* Maximum width of the speech bubble */
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16); /* Optional: Add shadow for depth */
@@ -48,7 +65,7 @@
 
 
 .background {
-    background-image: url("../Manga/backgroundmanga1.jpg");
+    background-image: url("../Manga/backgroundmanga1-transformed.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     

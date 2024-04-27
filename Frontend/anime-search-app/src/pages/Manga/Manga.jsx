@@ -5,6 +5,7 @@ import { useLoaderData } from 'react-router-dom';
 
 import './Manga.css'
 import { Divider } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
 import NotFoundError from '../NotFoundError/NotFoundError';
 
@@ -15,6 +16,11 @@ function Manga() {
     console.log(resData);
 
     const manga = resData[0];
+
+    const formatAuthorName = (author) => {
+        const splitName = author.split(", ");
+        return `${splitName[1]} ${splitName[0]}`;
+    };
 
     //TODO: Impliment json from resData
     //TODO: Handle error of new resData is found / is empty
@@ -27,18 +33,20 @@ function Manga() {
             {/*Manga page {String(resData)}*/}
             
             <div className="manga-image">
-                <h1 className="manga-title">{manga.title}</h1>
+                <h1 className="manga-title text">{manga.title}</h1>
                 <img src={manga.image} alt={manga.title} style={{ maxWidth: '300px' }} /> 
             </div>
             <div className="speech-bubble">
-                <p className='manga-details'>Author: {manga.author}</p>
+                <p className='manga-details'>Author: {formatAuthorName(manga.author)}</p> 
                 <Divider orientation='horizontal' />
                 <p className='manga-details'>Genres: {manga.genres}</p>
                 <Divider orientation='horizontal' />
-                <p className='manga-details'>Published: {manga.published_start} - {manga.published_end}</p>
-                <Divider orientation='horizontal' />
                 <p className='manga-details'>Themes: {manga.themes}</p>
                 <Divider orientation='horizontal' />
+
+                <p className='manga-details'>Published: {manga.published_start} - {manga.published_end}</p>
+                <Divider orientation='horizontal' />
+                
                 <p className='manga-details'>Synopsis: {manga.synopsis}</p> 
             </div>
             </div>
