@@ -1,4 +1,4 @@
-# Database Population Writer & Creator
+# Database Data Writer & Creator
 
 ## Overview
 The purpose of this tool is to create a database in CSV format by fetching data from the Jikan API (https://jikan.moe/). The resulting CSV files contain comprehensive information about manga, including titles, authors, demographics, genres, themes, reviews, and more.
