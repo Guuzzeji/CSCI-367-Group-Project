@@ -38,17 +38,17 @@ function Manga() {
                 <img src={manga.image} alt={manga.title} style={{ maxWidth: '300px' }} /> 
             </div>
             <div className="speech-bubble">
-                <p className='manga-details'>Author: {formatAuthorName(manga.author)}</p> 
+                <p className='manga-details'><strong>Author: </strong>{formatAuthorName(manga.author)}</p> 
                 <Divider orientation='horizontal' />
-                <p className='manga-details'>Genres: {manga.genres}</p>
+                <p className='manga-details'><strong>Genres: </strong>{manga.genres}</p>
                 <Divider orientation='horizontal' />
-                <p className='manga-details'>Themes: {manga.themes}</p>
+                <p className='manga-details'><strong>Themes: </strong>{manga.themes}</p>
                 <Divider orientation='horizontal' />
 
-                <p className='manga-details'>Published: {manga.published_start} - {manga.published_end}</p>
+                <p className='manga-details'><strong>Published: </strong>{manga.published_start} - {manga.published_end}</p>
                 <Divider orientation='horizontal' />
                 
-                <p className='manga-details'>Synopsis: {manga.synopsis}</p> 
+                <p className='manga-details'><strong>Synopsis: </strong>{manga.synopsis}</p> 
             </div>
             </div>
         </div>
