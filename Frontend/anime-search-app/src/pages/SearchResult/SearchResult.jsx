@@ -58,7 +58,7 @@ function SearchResult() {
                                 return (
                                     <tr>
                                     <th><img src={item.imgurl} alt={item.title +" cover"} width='100' height='100'></img></th>
-                                    <th><a href={"http://localhost:3030/manga/" + item.bookid}>{item.title}</a></th>
+                                    <th><a href={"/manga/" + item.bookid}>{item.title}</a></th>
                                     </tr>
                                 )
                             })}
