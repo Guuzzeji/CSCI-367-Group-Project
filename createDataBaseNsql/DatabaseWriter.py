@@ -31,7 +31,12 @@ def writeToCsv(filename, fieldnames, rows, mode='w'):
             writer.writeheader()
         writer.writerows(rows)
 
-
+# Checks if there is a star character in the name and returns the english title. 
+def choose_title(manga):
+    if '☆' in manga['title']:
+        return manga['title_english']
+    else:
+        return manga['title']
 
 
 def main():
@@ -47,7 +52,7 @@ def main():
                 manga_data = {
                 "bookid": manga['mal_id'],
                 "myanimelisturl": manga['url'],
-                "title": manga['title'],
+                "title": choose_title(manga),
                 "imgurl": manga['images']['jpg']['large_image_url'],
                 "chapters": manga['chapters'],
                 "volumes": manga['volumes'],
@@ -100,6 +105,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
