@@ -1,0 +1,50 @@
+.BackgroundPageTwo {
+    position: relative; /* Ensure the z-index works properly */
+    background-image: url(PageTwoBackdrop.webp);
+    background-repeat: repeat;
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
+    min-height: 100vh; /* Ensure the container takes up at least the height of the viewport */
+    background-blend-mode: overlay;
+}
+
+
+
+
+.bordered-table {
+    border: 1px solid black;
+    margin: auto;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.bordered-table tr {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-collapse: collapse;
+}
+
+.bordered-table th:nth-child(2),
+.bordered-table td:nth-child(2) {
+    width: 80%; /* Adjust the width of the second column as needed */
+    font-family: 'Manga Temple', sans-serif;
+                                                
+}
+
+.Error-table {
+    margin: auto;
+    z-index: 1;
+    
+}
+.error-cell-img img {
+    display: block;
+    margin-left: auto; /* Move the image to the right */
+}
+.message{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-collapse: collapse;
+    font-family: 'Manga Temple', sans-serif;   
+}
+.message th {
+    padding: 1px; /* Adjust the padding as needed */
+}
