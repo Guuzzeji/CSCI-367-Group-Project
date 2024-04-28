@@ -13,14 +13,16 @@ api = Blueprint("api", __name__, url_prefix="/API")
 # - book_id is the id of the manga in the database
 @api.route("/manga/<int:book_id>", methods=["GET"])
 def manga_info(book_id: int):
+    try:
+        manga_details = get_manga_details(book_id)
+        if manga_details:
+            return manga_details, 200
+        else:
+            return jsonify({"error": "Manga not found"}), 404
+            #return {"error": "Manga not found"}, 404
 
-    manga_details = get_manga_details(book_id)
-    if manga_details:
-        return manga_details, 200
-        # return manga_details, 200
-    else:
-        return jsonify({"error": "Manga not found"}), 404
-        #return {"error": "Manga not found"}, 404
+    except:
+        return jsonify({"error": "Something bad happen",}), 400
 
 
 # ! == Query setup ==
@@ -31,12 +33,15 @@ def manga_info(book_id: int):
 # - query = user search term, this is required to run
 @api.route("/search", methods=["GET"])
 def search():
-    query = request.args.get("query")
-    search_type = request.args.get("type", "title")  # Default is title
+    try:
+        query = request.args.get("query")
+        search_type = request.args.get("type", "title")  # Default is title
 
-    # ! Note using lask book id
-    # last_book_id = request.args.get("lastbookid", 1)  # Default is 1 
+        # ! Not using lask book id
+        # last_book_id = request.args.get("lastbookid", 1)  # Default is 1 
 
-    search_result = search_for_manga(search_type, query)
+        search_result = search_for_manga(search_type, query)
+        return jsonify(search_result), 200
 
-    return jsonify(search_result), 200
+    except:
+        return jsonify({"error": "Something bad happen",}), 400
