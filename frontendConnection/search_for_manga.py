@@ -15,7 +15,7 @@ def search_for_manga(search_type: str, last_book_id: int, query: str):
         table_name = "Manga"
 
         searchQuery = """
-        SELECT m.imgurl, m.title
+        SELECT m.imgurl, m.title, m.bookid
         FROM {} m
         WHERE m.title = %s
         OR m.title LIKE %s 
@@ -26,12 +26,12 @@ def search_for_manga(search_type: str, last_book_id: int, query: str):
         WHEN m.title LIKE %s then 3
         END
         """.format(table_name)
-        keys = ['imgurl', 'title']
+        keys = ['imgurl', 'title', 'bookid']
 
     elif search_type == "Author":
         table_name = "Authors"
         searchQuery = """
-        SELECT m.imgurl, m.title, a.name
+        SELECT m.imgurl, m.title, a.name, m.bookid
         FROM Author a
         INNER JOIN Manga m on m.bookid = a.bookid
         WHERE a.name = %s
@@ -44,12 +44,12 @@ def search_for_manga(search_type: str, last_book_id: int, query: str):
         END,
         m.title;
         """.format(table_name)
-        keys = ['imgurl', 'title', 'author']
+        keys = ['imgurl', 'title', 'author', 'bookid']
 
     elif search_type == "Genre":
         table_name = "Genre"
         searchQuery = """
-        SELECT m.imgurl, m.title, g.type
+        SELECT m.imgurl, m.title, g.type, m.bookid
         FROM Genre g
         INNER JOIN Manga m on m.bookid = g.bookid
         WHERE g.type = %s
@@ -62,11 +62,11 @@ def search_for_manga(search_type: str, last_book_id: int, query: str):
         END,
         m.title;
         """.format(table_name)
-        keys = ['imgurl', 'title', 'type']
+        keys = ['imgurl', 'title', 'type', 'bookid']
     elif search_type == "Theme":
         table_name = "Theme"
         searchQuery = """
-        SELECT m.imgurl, m.title, t.type
+        SELECT m.imgurl, m.title, t.type, m.bookid
         FROM Theme t
         INNER JOIN Manga m on m.bookid = t.bookid
         WHERE t.type = %s
@@ -79,7 +79,7 @@ def search_for_manga(search_type: str, last_book_id: int, query: str):
         END,
         m.title;
         """.format(table_name)
-        keys = ['imgurl', 'title', 'type']
+        keys = ['imgurl', 'title', 'type', 'bookid']
 
     cursor.execute(searchQuery, (query, f'{query}%', f'%{query}%', query, f'{query}%', f'%{query}%'))
     # query code goes here
