@@ -13,8 +13,6 @@ def search_for_manga(search_type: str, query: str):
 
     search_type = search_type.lower()
 
-    # NOTE: Key is used to reorganize result as json file so each element has the correct key pair
-
     if search_type == "title":
         table_name = "Manga"
         keys = ['bookid','imgurl', 'title']
@@ -87,6 +85,8 @@ def search_for_manga(search_type: str, query: str):
 
     cursor.execute(searchQuery, (query, f'{query}%', f'%{query}%', query, f'{query}%', f'%{query}%'))
     result = cursor.fetchall()
+
+    # NOTE: Key is used to reorganize result as json file so each element has the correct key pair
     result_key_list = [{keys[i]: row[i] for i in range(len(keys))} for row in result]
 
     cursor.close()
