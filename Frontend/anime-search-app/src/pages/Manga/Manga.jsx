@@ -8,6 +8,7 @@ import { Divider } from '@chakra-ui/react'
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
 import NotFoundError from '../NotFoundError/NotFoundError';
+import SearchBarInput from '../../components/searchbarinput/SearchBarInput';
 
 function Manga() {
     try {
@@ -29,6 +30,11 @@ function Manga() {
     return (
         <div className='background'>
             
+            <div className="header">
+                <div className='search'>
+                    <SearchBarInput /> </div>
+            </div>
+
             <div className='container'>
         
             {/*Manga page {String(resData)}*/}
@@ -40,9 +46,11 @@ function Manga() {
             <div className="speech-bubble">
                 <p className='manga-details'><strong>Author: </strong>{formatAuthorName(manga.author)}</p> 
                 <Divider orientation='horizontal' />
-                <p className='manga-details'><strong>Genres: </strong>{manga.genres}</p>
+                <p className='manga-details'><strong>Genres: </strong>{manga.genres !== "null" ? manga.genres : "Unknown"}</p>
                 <Divider orientation='horizontal' />
-                <p className='manga-details'><strong>Themes: </strong>{manga.themes}</p>
+                <p className='manga-details'><strong>Themes: </strong>{manga.themes !== "null" ? manga.themes : "Unknown"}</p>
+                <Divider orientation='horizontal' />
+                <p className='manga-details'><strong>Chapters: </strong>{manga.chapters ? manga.chapters : "Unknown"}</p>
                 <Divider orientation='horizontal' />
 
                 <p className='manga-details'><strong>Published: </strong>{manga.published_start} - {manga.published_end}</p>
@@ -50,6 +58,9 @@ function Manga() {
                 
                 <p className='manga-details'><strong>Synopsis: </strong>{manga.synopsis}</p> 
             </div>
+            {/*<div className="speech-bubble">
+                <p className='manga-details'>Score: {manga.score}</p>
+            </div>*/}
             </div>
         </div>
     );

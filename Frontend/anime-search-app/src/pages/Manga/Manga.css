@@ -8,6 +8,25 @@
     font-family: 'Manga-Temple', sans-serif;
 }
 
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: absolute;
+    left: 28.5%;
+    height: 10px;
+    font-size: 14px;
+    border: none;
+    /*border: 1px solid #cccccc;*/
+    /*background-color: #f0f0f0;*/
+}
+
+.search input{
+    border: 2px solid #000000;
+    background-color: #ffffff;
+}
+
 .manga-title {
     font-size: 24px;
     color: #000000;
@@ -16,9 +35,11 @@
     text-align: center;
     /*align-items: center;*/
     border-radius: 10px;
+    border: 3px solid #000;
     background-color: #ffffff;
     display: inline-block;
     width: 300px;
+    
     /*position: 'relative';*/
     /*display: inline-block;
     justify-self: center;
@@ -60,6 +81,7 @@
     border-radius: 10px; /* Rounded corners */
     max-width: 99%; /* Maximum width of the speech bubble */
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16); /* Optional: Add shadow for depth */
+    border: 3px solid #000;
 }
 
 
