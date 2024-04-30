@@ -1,11 +1,10 @@
 import * as React from 'react';
 
-import { Text, ScaleFade } from '@chakra-ui/react';
+
 import { useLoaderData } from 'react-router-dom';
 
 import './Manga.css'
 import { Divider } from '@chakra-ui/react'
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
 import NotFoundError from '../NotFoundError/NotFoundError';
 import SearchBarInput from '../../components/searchbarinput/SearchBarInput';
