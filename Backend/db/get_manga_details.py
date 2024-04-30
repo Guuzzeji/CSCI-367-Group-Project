@@ -12,18 +12,17 @@ def get_manga_details(book_id: int):
 
     page_three_query = '''
             SELECT DISTINCT m.title, a.Name, DATE_FORMAT(m.publishedstart, '%m/%d/%Y') AS published_start,
-            DATE_FORMAT(m.publishedend, '%m/%d/%Y') AS published_end,
+            DATE_FORMAT(m.publishedend, '%m/%d/%Y') AS published_end, m.imgurl,
             GROUP_CONCAT(DISTINCT t.type SEPARATOR ', ') AS themes,
             GROUP_CONCAT(DISTINCT g.type SEPARATOR ', ') AS genres,
-            m.synopsis,
-            m.imgurl,
-            m.myanimelisturl
+            m.synopsis, r.score, m.chapters
             FROM Manga m
             INNER JOIN Author a ON a.bookid = m.bookid
             INNER JOIN Theme t ON t.bookid = a.bookid
             INNER JOIN Genre g ON g.bookid = t.bookid
+            INNER JOIN Ratings r on r.bookid = m.bookid
             WHERE m.bookid = %s
-            GROUP BY m.title, a.Name, m.publishedstart, m.publishedend, m.synopsis
+            GROUP BY m.title, a.Name, m.publishedstart, m.publishedend, m.synopsis, r.score, m.chapters
         '''
 
     cursor.execute(page_three_query, (book_id,))
@@ -50,11 +49,12 @@ def get_manga_details(book_id: int):
                 "author": result[1],
                 "published_start": result[2], #published_start,
                 "published_end": result[3], #published_end,
-                "themes": result[4],
-                "genres": result[5],
-                "synopsis": result[6],
-                "imgurl": result[7],
-                "myanimelisturl": result[8]
+                "image": result[4],
+                "themes": result[5],
+                "genres": result[6],
+                "synopsis": result[7],
+                "score": result[8],
+                "chapters": result[9]
             }
             manga_details_list.append(manga_details)
     else:
