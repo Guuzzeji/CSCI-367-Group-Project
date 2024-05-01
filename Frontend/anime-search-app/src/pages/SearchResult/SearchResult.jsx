@@ -56,8 +56,10 @@ function SearchResult() {
                         {resData.map(function(item) {
                             console.log(item)
                                 return (
-                                    <tr>
-                                    <th><a href={"http://localhost:3000/manga/" + item.bookid}><img src={item.imgurl} alt={item.title +" cover"} width='100' height='100'></img></a></th>
+                                    <tr> 
+                                    <th> <a href={"http://localhost:3000/manga/" + item.bookid}>
+                                        <img src={item.imgurl} alt={item.title +" cover"} width='100' height='100'></img> </a>
+                                    </th>
                                     <th><a href={"http://localhost:3000/manga/" + item.bookid}>{item.title}</a></th>
                                     </tr>
                                 )

@@ -14,7 +14,22 @@ This web server is designed to act as an intermediary between the frontend and M
 
 **Response:**
 
-> Need to implement
+```txt
+[
+    {
+        imgurl: "string",
+        title: "string",
+        genres: "string",
+        author: "string",
+        published_end: "string",
+        published_start: "string",
+        themes: "string" | "null",
+        synopsis: "string",
+        imgurl: "string",
+        myanimelisturl: "string",
+    }
+]
+```
 
 This endpoint retrieves more information about a specific manga based on its `book_id`, which corresponds to an ID within the MySQL database.
 
@@ -22,11 +37,23 @@ This endpoint retrieves more information about a specific manga based on its `bo
 
 ### GET: `/API/search`
 
-**Example:** `/API/search?query=helloworld&type=author&lastbookid=10`
+**Example:** `/API/search?query=helloworld&type=author`
 
-**Response:**
+**Response: JSON**
 
-> Need to implement
+```txt
+[
+    {
+        bookid: 0,
+        imgurl: "string",
+        title: "string",
+        type: "string" | undefined,
+        author: "string" | undefined
+    }
+    ...
+]
+```
+
 
 This endpoint is a query URL used to search for manga in the database based on given parameters:
 - **type**: title | author | theme | genre (default is title)
@@ -78,23 +105,6 @@ After activating the virtual environment, install the required packages using th
 ```bash
 pip install -r requirements.txt
 ```
-
-## How to Run the Web Server
-
-Create a .env file at the root of the folder and define the following variables. These variables should match those defined for the MySQL Docker image or the username and password you've set for the MYSQL_DATABASE.
-
-```env
-MYSQL_USERNAME=exampleUser
-MYSQL_PASSWORD=pwd12345
-MYSQL_HOST=localhost
-MYSQL_DATABASE=manga_db
-MYSQL_PORT=3306
-FLASK_DEBUG=true
-```
-
-**Note**: 
-- Avoid changing MYSQL_DATABASE unless you know what you're doing.
-- Set `FLASK_DEBUG` to true if you are making changes to the web server
 
 ## Run / Start Server
 

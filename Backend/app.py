@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 
 from router.test import test
 from router.api import api
@@ -11,6 +12,9 @@ from config_env import config_env
 # In charge of running server and store Flask App
 
 app = Flask(__name__)
+CORS(app)
+
+# Add routes
 app.register_blueprint(test)
 app.register_blueprint(api)
 app.register_error_handler(404, not_found)

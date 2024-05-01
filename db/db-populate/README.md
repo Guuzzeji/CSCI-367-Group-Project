@@ -1,9 +1,18 @@
-#database
+# Database Data Writer & Creator
 
-## 1
-Make sure you create a schema for this project and add these tables:
+## Overview
+The purpose of this tool is to create a database in CSV format by fetching data from the Jikan API (https://jikan.moe/). The resulting CSV files contain comprehensive information about manga, including titles, authors, demographics, genres, themes, reviews, and more.
 
-```
+## API Documentation
+- Manga Reviews: [API Documentation](https://docs.api.jikan.moe/#tag/manga/operation/getMangaReviews)
+- Manga Search: [API Documentation](https://docs.api.jikan.moe/#tag/manga/operation/getMangaSearch)
+
+## How to Use
+
+### Step 1 - Create tables
+Ensure that you create a schema for this project and add the following tables:
+
+```SQL
 -- Create Manga Table
 CREATE TABLE Manga (
     bookid INT PRIMARY KEY,
@@ -18,7 +27,6 @@ CREATE TABLE Manga (
     synopsis VARCHAR(3000),
     background VARCHAR(2000)
 );
-
 
 -- Create Author Table
 CREATE TABLE Author (
@@ -49,7 +57,7 @@ CREATE TABLE Theme (
     FOREIGN KEY (bookid) REFERENCES Manga(bookid)
 );
 
-/*Do we really need this one?*/
+-- NOTE: NOT USING THIS TABLE
 -- Create Review Table
 CREATE TABLE Review (
     bookid INT,
@@ -67,14 +75,10 @@ CREATE table Ratings (
 );
 ```
 
-## 2
-To run the DatabaseWriter, you need to install python (obv) and in case you need other libraries like requests or datetime, in cmd prompt, write: 
-pip install whatever or if that doesnt work python -m pip install whatever
-Create a folder to put it in and run. EZ
+### Step 2 - Run DatabaseWriter.py
 
+To run the DatabaseWriter, you need to install python (obv) and in case you need other libraries like requests or datetime, in cmd prompt, write: pip install whatever or if that doesnt work python -m pip install whatever Create a folder to put it in and run. EZ
 
-## 3
-To run the insertIntoSql file, make sure you've done the previous steps. If need be, change the paths to the csv files in the code. 
-Also make sure you change the connections to your own specific instances. 
-
+### Step 3 - Run insertIntoSql.py
+To run the insertIntoSql file, make sure you've done the previous steps. If need be, change the paths to the csv files in the code. Also make sure you change the connections to your own specific instances.
 

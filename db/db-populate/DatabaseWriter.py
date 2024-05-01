@@ -1,10 +1,6 @@
 import requests
 import csv
 import time
-import math
-import datetime
-import os
-import json
 
 print("lol")
 
@@ -30,6 +26,7 @@ def writeToCsv(filename, fieldnames, rows, mode='w'):
         if mode == 'w':
             writer.writeheader()
         writer.writerows(rows)
+
 
 # Checks if there is a star character in the name and returns the english title. 
 def choose_title(manga):
@@ -105,7 +102,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
 
