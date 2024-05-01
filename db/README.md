@@ -15,21 +15,88 @@ Before you begin, ensure you have Docker Desktop installed on your machine. Foll
 
 ### Setting Up the MySQL Database
 
-1. **Create .env File:**
-    - Inside the `db` folder, create a file named `.env`.
-    - Add the following environment variables to the `.env` file:
-    ```plaintext
-    MYSQL_PASSWORD=pwd12345
-    MYSQL_USER=exampleUser
-    MYSQL_ROOT_PASSWORD=rootpassword
-    ```
+**Run the Server:**
 
-2. **Run the Server:**
-    - Open a terminal and navigate to the root directory of this repository.
-    - Run the following command to start the MySQL server using Docker Compose:
-    - This will have the server running on `localhost:4040`
-    ```sh
-    docker-compose --env-file path/to/.env up
-    ```
-    Replace `path/to/.env` with the actual path to your `.env` file.
+- Open a terminal and navigate to the root directory of this repository.
+- Run the following command to start the MySQL server using Docker Compose:
+- This will have the server running on `localhost:4040`
 
+```sh
+docker-compose up
+```
+
+## Database Password & Username
+
+**We know this is bad, but have to do this for easy of development**
+
+```text
+MYSQL_USER=exampleUser
+MYSQL_PASSWORD=pwd12345
+MYSQL_ROOT_PASSWORD=rootpassword
+```
+
+## Created Tables
+
+```SQL
+-- Create Manga Table
+CREATE TABLE Manga (
+    bookid INT PRIMARY KEY,
+    myanimelisturl VARCHAR(255),
+    title VARCHAR(255),
+    imgurl VARCHAR(255),
+    chapters INT,
+    volumes INT,
+    `status` varchar(50),
+    publishedstart DATETIME,
+    publishedend DATETIME,
+    synopsis VARCHAR(3000),
+    background VARCHAR(2000)
+);
+
+-- Create Author Table
+CREATE TABLE Author (
+    bookid INT,
+    Name VARCHAR(255),
+    authorurl varchar(250),
+    FOREIGN KEY (bookid) REFERENCES Manga(bookid)
+);
+
+-- Create Demographic Table
+CREATE TABLE Demographic (
+    bookid INT,
+    Name VARCHAR(255),
+    FOREIGN KEY (bookid) REFERENCES Manga(bookid)
+);
+
+-- Create Genre Table
+CREATE TABLE Genre (
+    bookid INT,
+    type VARCHAR(255),
+    FOREIGN KEY (bookid) REFERENCES Manga(bookid)
+);
+
+-- Create Theme Table
+CREATE TABLE Theme (
+    bookid INT,
+    type VARCHAR(255),
+    FOREIGN KEY (bookid) REFERENCES Manga(bookid)
+);
+
+/*Do we really need this one?*/
+-- NOTE: NOT USING THIS TABLE
+-- Create Review Table
+CREATE TABLE Review (
+    bookid INT,
+    username VARCHAR(255),
+    score INT,
+    datecreated DATETIME,
+    myanimeurl VARCHAR(255),
+    FOREIGN KEY (bookid) REFERENCES Manga(bookid)
+); 
+
+CREATE table Ratings (
+	bookid int,
+    score DECIMAL(10,2),
+    FOREIGN KEY (bookid) REFERENCES Manga(bookid)
+);
+```
