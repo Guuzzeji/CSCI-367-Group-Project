@@ -57,8 +57,8 @@ function SearchResult() {
                             console.log(item)
                                 return (
                                     <tr>
-                                    <th><img src={item.imgurl} alt={item.title +" cover"} width='100' height='100'></img></th>
-                                    <th><a href={"/manga/" + item.bookid}>{item.title}</a></th>
+                                    <th><a href={"http://localhost:3000/manga/" + item.bookid}><img src={item.imgurl} alt={item.title +" cover"} width='100' height='100'></img></a></th>
+                                    <th><a href={"http://localhost:3000/manga/" + item.bookid}>{item.title}</a></th>
                                     </tr>
                                 )
                             })}

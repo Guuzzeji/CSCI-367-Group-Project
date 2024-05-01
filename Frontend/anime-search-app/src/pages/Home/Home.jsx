@@ -8,10 +8,22 @@ import {
 
 import './Home.css';
 import icon_image from './gojo-home.gif';
+import icon_image2 from './robinFace.png';
+import icon_image3 from './funny-face.jpg';
+
 
 import SearchBarInput from '../../components/searchbarinput/SearchBarInput';
 
+function getRandomImage() {
+    const images = [icon_image, icon_image2, icon_image3]; // Add more images here
+    const index = Math.floor(Math.random() * images.length);
+    return images[index];
+}
+
 function Home() {
+
+    const randomImage = getRandomImage();
+
     return (
         <div className='Background'>
             <div className='BackgroundOverlay'>
@@ -20,7 +32,7 @@ function Home() {
                         <Image
                             borderRadius='full'
                             boxSize='150px'
-                            src={icon_image}
+                            src={randomImage}
                             alt='some anime dude'
                         />
                         <Text className='LogoText'>OtakuOracle</Text>
