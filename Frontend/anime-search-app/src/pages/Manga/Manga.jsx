@@ -52,7 +52,8 @@ function Manga() {
                 <p className='manga-details'><strong>Chapters: </strong>{manga.chapters ? manga.chapters : "Unknown"}</p>
                 <Divider orientation='horizontal' />
 
-                <p className='manga-details'><strong>Published: </strong>{manga.published_start} - {manga.published_end}</p>
+                <p className='manga-details'><strong>Published: </strong>{manga.published_start} - {manga.published_end ? manga.published_end : 
+                manga.status}</p>
                 <Divider orientation='horizontal' />
                 
                 <p className='manga-details'><strong>Synopsis: </strong>{manga.synopsis}</p> 
